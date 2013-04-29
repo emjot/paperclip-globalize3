@@ -87,6 +87,7 @@ module Paperclip
         def queue_existing_for_delete_with_globalize3(with_locales = nil) #:nodoc:
           if instance.respond_to?(:translated_locales) && instance.translated?(:"#{name}_file_name")
             # do it for the given locales only (or for all translated locales if none are given)
+            # TODO translated_locales are not present any more when this is called via destroy callback (unless 'translates' is defined AFTER 'has_attached_file' in the model class)
             with_locales = instance.translated_locales if with_locales.nil?
             Globalize.with_locales([*with_locales]) { queue_existing_for_delete_without_globalize3 }
           else

@@ -32,12 +32,14 @@ For each of your attachments which should have support for different locales, se
 2. Declare in the model that it 'translates' the paperclip fields ('xxx_file_name' etc.)
 3. Use the :locale interpolation for the paperclip url
 
+NOTE: Make sure your `translates` are always defined after the `has_attached_file`! (Otherwise the files will not be deleted from the filesystem when the model is destroyed.)
+
 Example:
 
     class User < ActiveRecord::Base
-      translates :avatar_file_name, :avatar_file_size, :avatar_created_at, :avatar_updated_at, :avatar_fingerprint
       has_attached_file :avatar,
                         :url => "/system/:attachment/:id/:locale/:style-:fingerprint.:extension"
+      translates :avatar_file_name, :avatar_file_size, :avatar_created_at, :avatar_updated_at, :avatar_fingerprint
     end
 
 ## Todo / Future Plans
@@ -47,6 +49,7 @@ Example:
   * support `translates :attachment_name`
   * support `:translated` option for `has_attached_file`
   * eliminate the need to specify; automatically set `translates` as soon as the :locale interpolation is used
+* Don't depend on order of definition for it to work (`translates` after `has_attached_file`)
 
 ## Contributing
 
