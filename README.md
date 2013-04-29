@@ -47,7 +47,6 @@ Example:
   * support `translates :attachment_name`
   * support `:translated` option for `has_attached_file`
   * eliminate the need to specify; automatically set `translates` as soon as the :locale interpolation is used
-* Check whether there are cases where the caching by paperclip's instance_read/instance_write methods could cause problems (since this is currently not locale specific)
 
 ## Contributing
 

@@ -4,12 +4,38 @@ module Paperclip
 
       def self.included(base)
         base.send :include, InstanceMethods
+        base.send :alias_method_chain, :instance_write, :globalize3
+        base.send :alias_method_chain, :instance_read, :globalize3
         base.send :alias_method_chain, :assign, :globalize3
         base.send :alias_method_chain, :clear, :globalize3
         base.send :alias_method_chain, :queue_existing_for_delete, :globalize3
       end
 
       module InstanceMethods
+
+        # use a localized cache if required
+        def cached_instance_variable_name(getter)
+          if instance.respond_to?(:translated?) && instance.translated?(getter.to_sym)
+            :"@_#{getter}_#{Globalize.locale}"
+          else
+            :"@_#{getter}"
+          end
+        end
+
+        def instance_write_with_globalize3(attr, value)
+          setter = :"#{name}_#{attr}="
+          responds = instance.respond_to?(setter)
+          self.instance_variable_set(cached_instance_variable_name(setter.to_s.chop), value)
+          instance.send(setter, value) if responds || attr.to_s == "file_name"
+        end
+
+        def instance_read_with_globalize3(attr)
+          getter = :"#{name}_#{attr}"
+          responds = instance.respond_to?(getter)
+          cached = self.instance_variable_get(cached_instance_variable_name(getter))
+          return cached if cached
+          instance.send(getter) if responds || attr.to_s == "file_name"
+        end
 
         def assign_with_globalize3(uploaded_file)
           ensure_required_accessors!
