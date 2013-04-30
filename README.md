@@ -1,5 +1,7 @@
 # Paperclip::Globalize3
 
+[![Build Status](https://travis-ci.org/emjot/paperclip-globalize3.png?branch=master)](https://travis-ci.org/emjot/paperclip-globalize3)
+
 Use locale-specific attachments in your Rails app with paperclip and globalize3.
 
 You can transparently read and write your attachments in context of the current locale. E.g. `my_model.my_attachment` returns a different attachment when your current locale is 'en' compared to when your current locale is 'de'.
