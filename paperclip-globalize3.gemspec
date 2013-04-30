@@ -22,6 +22,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency "globalize3", "~> 0.3"
 
   spec.add_development_dependency "bundler", "~> 1.3"
+  spec.add_development_dependency "appraisal", "~> 0.5.1"
   spec.add_development_dependency "rspec-rails", "~> 2.8.0"
   spec.add_development_dependency "sqlite3"
   spec.add_development_dependency "rake"
