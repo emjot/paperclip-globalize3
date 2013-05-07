@@ -18,7 +18,7 @@ See 1.x versions of this gem for paperlip 3.x support.
 
 Add this line to your application's Gemfile:
 
-    gem 'paperclip-globalize3'
+    gem 'paperclip-globalize3', '~> 0.1'
 
 And then execute:
 
@@ -26,7 +26,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install paperclip-globalize3
+    $ gem install paperclip-globalize3 --version '~> 0.1'
 
 ## Usage
 
