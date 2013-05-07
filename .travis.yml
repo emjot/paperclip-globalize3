@@ -4,6 +4,10 @@ rvm:
   - 1.9.2
   - 1.9.3
   - ree
+env:
+  - PAPERCLIP_VERSION=
+  - PAPERCLIP_VERSION="~> 2.5.0"
+  - PAPERCLIP_VERSION=">= 2.8.0"
 script: "bundle exec rake spec"
 gemfile:
   - gemfiles/rails_3.0.gemfile
