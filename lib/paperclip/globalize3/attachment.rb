@@ -29,7 +29,11 @@ module Paperclip
 
           @dirty = true
 
-          post_process(*only_process) if post_processing && valid_assignment?
+          if post_processing &&
+              (Paperclip::Attachment.instance_method(:valid_assignment?).parameters.present? || # paperclip <=3.3 compatibility
+                  valid_assignment?)
+            post_process(*only_process)
+          end
 
           instance_write(:file_size,   @queued_for_write[:original].size)
           instance_write(:fingerprint, @queued_for_write[:original].fingerprint) if instance_respond_to?(:fingerprint)
@@ -75,6 +79,19 @@ module Paperclip
             Globalize.with_locales([*with_locales]) { yield }
           else
             yield
+          end
+        end
+
+      end
+
+      module Compatibility
+
+        # For compatibility with paperclip 3.3
+        module Paperclip33
+          def only_process
+            only_process = @options[:only_process].dup
+            only_process = only_process.call(self) if only_process.respond_to?(:call)
+            only_process.map(&:to_sym)
           end
         end
 
