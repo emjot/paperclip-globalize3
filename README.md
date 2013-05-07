@@ -10,7 +10,9 @@ Note that this implementation patches some methods in the `Paperclip::Attachment
 
 ## Compatibility
 
-Currently, paperclip 2.x (>= 2.5) and globalize3 0.3 are supported. Support for paperclip 3.x is planned.
+The 0.x versions of this gem support paperclip 2.x (>= 2.5) and globalize3 0.3.
+
+See 1.x versions of this gem for paperlip 3.x support.
 
 ## Installation
 
@@ -46,7 +48,6 @@ Example:
 
 ## Todo / Future Plans
 
-* Support paperclip 3.x
 * Make it easier to specify translated attachments, e.g. using one of these options:
   * support `translates :attachment_name`
   * support `:translated` option for `has_attached_file`
