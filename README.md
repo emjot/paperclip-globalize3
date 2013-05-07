@@ -10,7 +10,7 @@ Note that this implementation patches some methods in the `Paperclip::Attachment
 
 ## Compatibility
 
-The 0.x versions of this gem support paperclip 2.x (>= 2.5) and globalize3 0.3.
+The 0.x versions of this gem support paperclip 2.x (>= 2.5.2) and globalize3 0.3.
 
 See 1.x versions of this gem for paperlip 3.x support.
 

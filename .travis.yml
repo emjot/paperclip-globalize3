@@ -6,7 +6,7 @@ rvm:
   - ree
 env:
   - PAPERCLIP_VERSION=
-  - PAPERCLIP_VERSION="2.5.0"
+  - PAPERCLIP_VERSION="2.5.2"
   - PAPERCLIP_VERSION="~> 2.8"
 script: "bundle exec rake spec"
 gemfile:
