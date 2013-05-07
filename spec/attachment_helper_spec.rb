@@ -10,12 +10,16 @@ describe 'Paperclip::Globalize3::Attachment' do
     Rails.stub(:const_defined?).with(:Railtie).and_return(false)
   end
 
+  let (:test_image_dir) do
+    File.expand_path(File.join(File.dirname(__FILE__), 'data'))
+  end
+
   let(:test_image_file) do
-    File.new(File.expand_path(File.join(File.dirname(__FILE__), 'data/test.png')))
+    File.new(File.join(test_image_dir,'test.png'))
   end
 
   let(:test_image_file2) do
-    File.new(File.expand_path(File.join(File.dirname(__FILE__), 'data/test2.png')))
+    File.new(File.join(test_image_dir, 'test2.png'))
   end
 
   context 'with translations' do
@@ -82,6 +86,20 @@ describe 'Paperclip::Globalize3::Attachment' do
       p.destroy
       File.exist?(path_en).should be_false
       File.exist?(path_de).should be_false
+    end
+
+    context 'with :only_process' do
+
+      it 'should only clear the provided style in the current locale on assign' do
+        p = OnlyProcessPost.create
+        p.image.should_receive(:queue_some_for_delete).with(:thumb, :locales => :en)
+        p.image.should_not_receive(:queue_all_for_delete)
+
+        Globalize.with_locale(:en) do
+          p.update_attributes!(:image => test_image_file)
+        end
+      end
+
     end
 
   end
