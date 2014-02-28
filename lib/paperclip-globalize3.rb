@@ -5,7 +5,11 @@ require "globalize"
 require "paperclip"
 
 Paperclip.interpolates(:locale) { |attachment, _|
-  attachment.instance.send("#{attachment.name}_file_name").translation_metadata[:locale]
+  if attachment.instance.respond_to?(:translation_metadata)
+    attachment.instance.send("#{attachment.name}_file_name").translation_metadata[:locale].to_s
+  else
+    Globalize.locale.to_s
+  end
 }
 
 unless Paperclip::Attachment.instance_methods.include?(:only_process)
