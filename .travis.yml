@@ -8,6 +8,4 @@ env:
   - PAPERCLIP_VERSION="~> 4.1"
 script: "bundle exec rake spec"
 gemfile:
-  - gemfiles/rails_3.0.gemfile
-  - gemfiles/rails_3.1.gemfile
-  - gemfiles/rails_3.2.gemfile
+  - gemfiles/rails_4.0.gemfile
