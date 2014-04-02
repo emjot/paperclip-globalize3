@@ -3,9 +3,10 @@ require "paperclip/globalize3/attachment"
 
 require "globalize"
 require "paperclip"
+require "pry"
 
 Paperclip.interpolates(:locale) { |attachment, _|
-  if attachment.instance.respond_to?(:translation_metadata)
+  if attachment.instance.send("#{attachment.name}_file_name").respond_to?(:translation_metadata)
     attachment.instance.send("#{attachment.name}_file_name").translation_metadata[:locale].to_s
   else
     Globalize.locale.to_s
