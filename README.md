@@ -46,7 +46,20 @@ Example:
       translates :avatar_file_name, :avatar_file_size, :avatar_created_at, :avatar_updated_at, :avatar_fingerprint
     end
 
-## Todo / Future Plans
+## Development
+
+### Testing
+
+To setup tests, make sure all the ruby versions defined in `.travis.yml` are installed on your system.
+
+Run tests via:
+
+* `rake wwtd` (or, faster: `rake wwtd:parallel`) for all combinations of ruby/rails/paperclip versions
+* `rake wwtd:local` for all rails/paperclip versions, but only on current ruby
+* `rake spec` (or e.g. `bundle exec rspec spec --format documentation`) with main Gemfile and only on current ruby 
+
+
+### Todo / Future Plans
 
 * Make it easier to specify translated attachments, e.g. using one of these options:
   * support `translates :attachment_name`
@@ -54,7 +67,7 @@ Example:
   * eliminate the need to specify; automatically set `translates` as soon as the :locale interpolation is used
 * Don't depend on order of definition for it to work (`translates` after `has_attached_file`)
 
-## Contributing
+### Contributing
 
 1. Fork it
 2. Create your feature branch (`git checkout -b my-new-feature`)
