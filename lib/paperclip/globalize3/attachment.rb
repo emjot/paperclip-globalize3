@@ -14,8 +14,10 @@ module Paperclip
 
         def assign_with_globalize3(uploaded_file)
           ensure_required_accessors!
+          ensure_required_validations!
           file = Paperclip.io_adapters.for(uploaded_file)
 
+          return nil if not file.assignment?
           self.clear(*only_process, :locales => Globalize.locale) # [paperclip-globalize3] only clear current locale
           return nil if file.nil?
 
@@ -29,9 +31,7 @@ module Paperclip
 
           @dirty = true
 
-          if post_processing
-            post_process(*only_process)
-          end
+          post_process(*only_process) if post_processing
 
           instance_write(:file_size,   @queued_for_write[:original].size)
           instance_write(:fingerprint, @queued_for_write[:original].fingerprint) if instance_respond_to?(:fingerprint)
