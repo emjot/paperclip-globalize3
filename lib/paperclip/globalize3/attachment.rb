@@ -84,19 +84,6 @@ module Paperclip
 
       end
 
-      module Compatibility
-
-        # For compatibility with paperclip 3.3
-        module Paperclip33
-          def only_process
-            only_process = @options[:only_process].dup
-            only_process = only_process.call(self) if only_process.respond_to?(:call)
-            only_process.map(&:to_sym)
-          end
-        end
-
-      end
-
     end
   end
 end
