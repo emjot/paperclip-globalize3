@@ -4,7 +4,7 @@ require 'spec_helper'
 describe 'Paperclip::Globalize3::Attachment' do
 
   before(:each) do
-    Object.const_set(:Rails, double('Rails'))
+    stub_const('Rails', double('Rails'))
     Rails.stub(:root).and_return(ROOT.join('tmp'))
     Rails.stub(:env).and_return('test')
     Rails.stub(:const_defined?).with(:Railtie).and_return(false)

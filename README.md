@@ -54,7 +54,8 @@ To setup tests, make sure all the ruby versions defined in `.travis.yml` are ins
 
 Run tests via:
 
-* `rake wwtd` (or, faster: `rake wwtd:parallel`) for all combinations of ruby/rails/paperclip versions
+* `rake wwtd` for all combinations of ruby/rails/paperclip versions (NOTE that when using `rake wwtd:parallel` there 
+   might be some flickering test failures - needs to be investigated) 
 * `rake wwtd:local` for all rails/paperclip versions, but only on current ruby
 * `rake spec` (or e.g. `bundle exec rspec spec --format documentation`) with main Gemfile and only on current ruby 
 
