@@ -18,7 +18,7 @@ For paperclip 2.x support please use the 0.x versions of this gem.
 
 Add this line to your application's Gemfile:
 
-    gem 'paperclip-globalize3', '~> 1.0.0'
+    gem 'paperclip-globalize3', '~> 1.1.0'
 
 And then execute:
 
