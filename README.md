@@ -2,7 +2,8 @@
 
 [![Build Status](https://travis-ci.org/emjot/paperclip-globalize3.png?branch=master)](https://travis-ci.org/emjot/paperclip-globalize3)
 
-Use locale-specific attachments in your Rails app with paperclip and globalize3.
+Use locale-specific attachments in your Rails app with [paperclip](https://github.com/thoughtbot/paperclip) and 
+[globalize](https://github.com/globalize/globalize).
 
 You can transparently read and write your attachments in context of the current locale. E.g. `my_model.my_attachment` returns a different attachment when your current locale is 'en' compared to when your current locale is 'de'.
 
@@ -10,9 +11,9 @@ Note that this implementation patches some methods in the `Paperclip::Attachment
 
 ## Compatibility
 
-Currently, paperclip 3.x (>= 3.3) and globalize3 0.3 are supported.
+Currently, paperclip 4.1/4.2 and globalize 4.0 are supported.
 
-For paperclip 2.x support please use the 0.x versions of this gem.
+For paperclip 3.x with globalize3 support please use the 1.x versions of this gem.
 
 ## Installation
 
@@ -43,18 +44,24 @@ Example:
     class User < ActiveRecord::Base
       has_attached_file :avatar,
                         :url => "/system/:attachment/:id/:locale/:style-:fingerprint.:extension"
+      validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/                        
       translates :avatar_file_name, :avatar_file_size, :avatar_created_at, :avatar_updated_at, :avatar_fingerprint
     end
 
-## Todo / Future Plans
+## Development
 
-* Make it easier to specify translated attachments, e.g. using one of these options:
-  * support `translates :attachment_name`
-  * support `:translated` option for `has_attached_file`
-  * eliminate the need to specify; automatically set `translates` as soon as the :locale interpolation is used
-* Don't depend on order of definition for it to work (`translates` after `has_attached_file`)
+### Testing
 
-## Contributing
+To setup tests, make sure all the ruby versions defined in `.travis.yml` are installed on your system.
+
+Run tests via:
+
+* `rake wwtd` for all combinations of ruby/rails/paperclip versions (NOTE that when using `rake wwtd:parallel` there 
+   might be some flickering test failures - needs to be investigated) 
+* `rake wwtd:local` for all rails/paperclip versions, but only on current ruby
+* `rake spec` (or e.g. `bundle exec rspec spec --format documentation`) with main Gemfile and only on current ruby 
+
+### Contributing
 
 1. Fork it
 2. Create your feature branch (`git checkout -b my-new-feature`)

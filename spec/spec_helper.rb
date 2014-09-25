@@ -20,6 +20,10 @@ require File.expand_path(File.join(File.dirname(__FILE__), '../lib/paperclip-glo
 
 ActiveRecord::Base.send(:include, Paperclip::Glue)
 
+Paperclip.interpolates(:test_env_number) do |_, _|
+  ENV['TEST_ENV_NUMBER'].presence || '0'
+end
+
 # set up globalize3 and models (borrowed from globalize3)
 require 'fileutils'
 require 'logger'

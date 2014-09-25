@@ -1,13 +1,11 @@
 language: ruby
 rvm:
-  - 1.9.2
   - 1.9.3
-env:
-  - PAPERCLIP_VERSION=
-  - PAPERCLIP_VERSION="3.3.0"
-  - PAPERCLIP_VERSION="~> 3.4"
+  - 2.0.0
+  - 2.1.3
 script: "bundle exec rake spec"
 gemfile:
-  - gemfiles/rails_3.0.gemfile
-  - gemfiles/rails_3.1.gemfile
-  - gemfiles/rails_3.2.gemfile
+  - gemfiles/rails_4.0_paperclip_4_1.gemfile
+  - gemfiles/rails_4.0_paperclip_4_2.gemfile
+  - gemfiles/rails_4.1_paperclip_4_1.gemfile
+  - gemfiles/rails_4.1_paperclip_4_2.gemfile
