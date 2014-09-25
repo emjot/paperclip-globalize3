@@ -12,4 +12,8 @@ Paperclip.interpolates(:locale) { |attachment, _|
   end
 }
 
+unless Paperclip::Attachment.instance_methods.include?(:assign_attributes)
+  Paperclip::Attachment.send(:include, Paperclip::Globalize3::Attachment::Compatibility::Paperclip41)
+end
+
 Paperclip::Attachment.send(:include, Paperclip::Globalize3::Attachment)
