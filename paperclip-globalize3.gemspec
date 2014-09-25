@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = Paperclip::Globalize3::VERSION
   spec.authors       = ["Maximilian Herold"]
   spec.email         = ["herold@emjot.de"]
-  spec.description   = %q{locale-specific attachments with paperclip and globalize3}
-  spec.summary       = %q{locale-specific attachments with paperclip and globalize3}
+  spec.description   = %q{locale-specific attachments with paperclip and globalize}
+  spec.summary       = %q{locale-specific attachments with paperclip and globalize}
   spec.homepage      = "https://github.com/emjot/paperclip-globalize3"
   spec.license       = "MIT"
 
