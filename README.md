@@ -61,15 +61,6 @@ Run tests via:
 * `rake wwtd:local` for all rails/paperclip versions, but only on current ruby
 * `rake spec` (or e.g. `bundle exec rspec spec --format documentation`) with main Gemfile and only on current ruby 
 
-
-### Todo / Future Plans
-
-* Make it easier to specify translated attachments, e.g. using one of these options:
-  * support `translates :attachment_name`
-  * support `:translated` option for `has_attached_file`
-  * eliminate the need to specify; automatically set `translates` as soon as the :locale interpolation is used
-* Don't depend on order of definition for it to work (`translates` after `has_attached_file`)
-
 ### Contributing
 
 1. Fork it
