@@ -16,6 +16,7 @@ module Paperclip
           ensure_required_accessors!
           file = Paperclip.io_adapters.for(uploaded_file)
 
+          return nil if file.respond_to?(:assignment?) && !file.assignment?
           self.clear(*only_process, :locales => Globalize.locale) # [paperclip-globalize3] only clear current locale
           return nil if file.nil?
 
@@ -30,8 +31,7 @@ module Paperclip
           @dirty = true
 
           if post_processing &&
-              (Paperclip::Attachment.instance_method(:valid_assignment?).parameters.present? || # paperclip <=3.3 compatibility
-                  valid_assignment?)
+              (file.respond_to?(:assignment?) || valid_assignment?)
             post_process(*only_process)
           end
 

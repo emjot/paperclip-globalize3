@@ -3,8 +3,7 @@ rvm:
   - 1.9.2
   - 1.9.3
 env:
-  - PAPERCLIP_VERSION=
-  - PAPERCLIP_VERSION="3.3.0"
+  - PAPERCLIP_VERSION="3.4.0"
   - PAPERCLIP_VERSION="~> 3.4"
 script: "bundle exec rake spec"
 gemfile:
