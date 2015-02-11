@@ -118,4 +118,34 @@ describe 'Paperclip::Globalize3::Attachment' do
 
   end
 
+  context 'with fallbacks' do
+    around :each do |example|
+      old_fallbacks = Globalize.fallbacks
+      Globalize.fallbacks = {en: [:en, :de], de: [:de, :en]}
+      example.run
+      Globalize.fallbacks = old_fallbacks
+    end
+
+    it 'interpolates the correct locale if fallback is used' do
+      p = nil
+      Globalize.with_locale(:en) { p = Post.new( image: test_image_file); p.save! }
+      Globalize.with_locale(:de) { expect(p.image.url).to match('/en/') }
+    end
+
+    it 'preserves attachments when a new translation is created' do
+      p = nil
+      Globalize.with_locale(:de) do
+        p = Post.new(image: test_image_file)
+        p.save!
+      end
+      Globalize.with_locale(:en) do
+        p.image          = test_image_file
+        p.save!
+      end
+
+      Globalize.with_locale(:en) { expect(File.exists?(p.image.path)).to be_true }
+      Globalize.with_locale(:de) { expect(File.exists?(p.image.path)).to be_true }
+    end
+  end
+
 end
