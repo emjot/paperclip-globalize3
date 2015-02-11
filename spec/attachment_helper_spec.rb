@@ -24,7 +24,7 @@ describe 'Paperclip::Globalize3::Attachment' do
 
   context 'with translations' do
 
-    it 'should save different images for different locales' do
+    it 'saves different images for different locales' do
       p = Post.create
       Globalize.with_locale(:en) do
         p.image_file_name.should be_nil
@@ -46,7 +46,7 @@ describe 'Paperclip::Globalize3::Attachment' do
       Post.translation_class.count.should == 2
     end
 
-    it 'should only overwrite the image file for the current locale on re-assign' do
+    it 'only overwrites the image file for the current locale on re-assign' do
       p = Post.create
       path_en = Globalize.with_locale(:en) do
         p.update_attributes!(:image => test_image_file)
@@ -70,7 +70,7 @@ describe 'Paperclip::Globalize3::Attachment' do
       File.exist?(path_de).should be_true
     end
 
-    it 'should delete image files in all locales on destroy' do
+    it 'deletes image files in all locales on destroy' do
       p = Post.create
       path_en = Globalize.with_locale(:en) do
         p.update_attributes!(:image => test_image_file)
@@ -90,7 +90,7 @@ describe 'Paperclip::Globalize3::Attachment' do
 
     context 'with :only_process' do
 
-      it 'should only clear the provided style in the current locale on assign' do
+      it 'only clears the provided style in the current locale on assign' do
         p = OnlyProcessPost.create
         p.image.should_receive(:queue_some_for_delete).with(:thumb, :locales => :en)
         p.image.should_not_receive(:queue_all_for_delete)
@@ -106,7 +106,7 @@ describe 'Paperclip::Globalize3::Attachment' do
 
   context 'without translations' do
 
-    it 'should delete image files on destroy' do
+    it 'deletes image files on destroy' do
       p = Untranslated.create
       p.update_attributes!(:image => test_image_file)
       path = p.image.path
