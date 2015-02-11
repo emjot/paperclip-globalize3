@@ -52,19 +52,25 @@ module Paperclip
 
         def queue_some_for_delete_with_globalize3(*args)
           options = args.extract_options!
-          styles = args
+          styles  = args
           with_locales_if_translated(options[:locales]) do
             queue_some_for_delete_without_globalize3(styles)
           end
         end
 
         # If translated, execute the block for the given locales only (or for all translated locales if none are given).
-        # Otherwise, simply execute the block.
+        # If any locales are given, only those for which a translation exists are used.
+        # If attachment is untranslated, simply execute the block.
         def with_locales_if_translated(with_locales = nil, &block)
           if instance.respond_to?(:translated_locales) && instance.translated?(:"#{name}_file_name")
             # TODO translated_locales are not present any more when this is called via destroy callback (unless 'translates' is defined AFTER 'has_attached_file' in the model class)
-            with_locales = instance.translated_locales if with_locales.nil?
-            Globalize.with_locales([*with_locales]) { yield }
+            with_locales =
+              if with_locales.nil?
+                [*instance.translated_locales]
+              else
+                [*with_locales] & instance.translated_locales
+              end
+            Globalize.with_locales(with_locales) { yield }
           else
             yield
           end
