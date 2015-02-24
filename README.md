@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/emjot/paperclip-globalize3.png?branch=master)](https://travis-ci.org/emjot/paperclip-globalize3)
 
-Use locale-specific attachments in your Rails app with [paperclip](https://github.com/thoughtbot/paperclip) and 
+Use locale-specific attachments in your Rails app with [paperclip](https://github.com/thoughtbot/paperclip) and
 [globalize](https://github.com/globalize/globalize).
 
 You can transparently read and write your attachments in context of the current locale. E.g. `my_model.my_attachment` returns a different attachment when your current locale is 'en' compared to when your current locale is 'de'.
@@ -11,7 +11,7 @@ Note that this implementation patches some methods in the `Paperclip::Attachment
 
 ## Compatibility
 
-Currently, paperclip 4.1/4.2 and globalize 4.0 are supported.
+Currently, paperclip 4.1/4.2 and globalize 4.0/5.0 are supported.
 
 For paperclip 3.x with globalize3 support please use the 1.x versions of this gem.
 
@@ -44,7 +44,7 @@ Example:
     class User < ActiveRecord::Base
       has_attached_file :avatar,
                         :url => "/system/:attachment/:id/:locale/:style-:fingerprint.:extension"
-      validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/                        
+      validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
       translates :avatar_file_name, :avatar_file_size, :avatar_created_at, :avatar_updated_at, :avatar_fingerprint
     end
 
@@ -56,10 +56,10 @@ To setup tests, make sure all the ruby versions defined in `.travis.yml` are ins
 
 Run tests via:
 
-* `rake wwtd` for all combinations of ruby/rails/paperclip versions (NOTE that when using `rake wwtd:parallel` there 
-   might be some flickering test failures - needs to be investigated) 
+* `rake wwtd` for all combinations of ruby/rails/paperclip versions (NOTE that when using `rake wwtd:parallel` there
+   might be some flickering test failures - needs to be investigated)
 * `rake wwtd:local` for all rails/paperclip versions, but only on current ruby
-* `rake spec` (or e.g. `bundle exec rspec spec --format documentation`) with main Gemfile and only on current ruby 
+* `rake spec` (or e.g. `bundle exec rspec spec --format documentation`) with main Gemfile and only on current ruby
 
 ### Contributing
 

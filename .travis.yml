@@ -5,7 +5,7 @@ rvm:
   - 2.1.5
 script: "bundle exec rake spec"
 gemfile:
-  - gemfiles/rails_4.0_paperclip_4_1.gemfile
-  - gemfiles/rails_4.0_paperclip_4_2.gemfile
-  - gemfiles/rails_4.1_paperclip_4_1.gemfile
-  - gemfiles/rails_4.1_paperclip_4_2.gemfile
+  - gemfiles/rails_4.0_pc_4_1.gemfile
+  - gemfiles/rails_4.0_pc_4_2.gemfile
+  - gemfiles/rails_4.2_pc_4_1.gemfile
+  - gemfiles/rails_4.2_pc_4_2.gemfile
