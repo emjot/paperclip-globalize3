@@ -3,15 +3,11 @@ module Paperclip
     module Attachment
 
       def self.included(base)
-        base.send :include, InstanceMethods
-        base.send :alias_method_chain, :assign, :globalize3
-        base.send :alias_method_chain, :clear, :globalize3
-        base.send :alias_method_chain, :queue_all_for_delete, :globalize3
-        base.send :alias_method_chain, :queue_some_for_delete, :globalize3
+        base.send :prepend, InstanceMethods
       end
 
       module InstanceMethods
-        def assign_with_globalize3(uploaded_file)
+        def assign(uploaded_file)
           @file = Paperclip.io_adapters.for(uploaded_file)
           ensure_required_accessors!
           ensure_required_validations!
@@ -30,7 +26,7 @@ module Paperclip
           end
         end
 
-        def clear_with_globalize3(*args)
+        def clear(*args)
           options = args.extract_options!
           styles_to_clear = args
           if styles_to_clear.any?
@@ -44,17 +40,17 @@ module Paperclip
 
         private
 
-        def queue_all_for_delete_with_globalize3(options = {}) #:nodoc:
+        def queue_all_for_delete(options = {}) #:nodoc:
           with_locales_if_translated(options[:locales]) do
-            queue_all_for_delete_without_globalize3
+            super()
           end
         end
 
-        def queue_some_for_delete_with_globalize3(*args)
+        def queue_some_for_delete(*args)
           options = args.extract_options!
           styles  = args
           with_locales_if_translated(options[:locales]) do
-            queue_some_for_delete_without_globalize3(styles)
+            super(styles)
           end
         end
 
