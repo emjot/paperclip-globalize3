@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 
-describe 'Paperclip::Globalize3::Attachment' do
+RSpec.describe Paperclip::Globalize3::Attachment do
 
   before(:each) do
     stub_const('Rails', double('Rails'))
