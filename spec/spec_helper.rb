@@ -17,15 +17,15 @@ Paperclip.interpolates(:test_env_number) do |_, _|
   ENV['TEST_ENV_NUMBER'].presence || '0'
 end
 
-tmpdir = File.join(File.dirname(__FILE__), "../tmp")
+tmpdir = File.join(File.dirname(__FILE__), '../tmp')
 FileUtils.mkdir(tmpdir) unless File.exist?(tmpdir)
-log = File.expand_path(File.join(tmpdir, "globalize3_test.log"))
-FileUtils.touch(log) unless File.exists?(log)
+log = File.expand_path(File.join(tmpdir, 'globalize3_test.log'))
+FileUtils.touch(log) unless File.exist?(log)
 ActiveRecord::Base.logger = Logger.new(log)
 ActiveRecord::LogSubscriber.attach_to(:active_record)
-ActiveRecord::Base.establish_connection(:adapter => 'sqlite3', :database => ':memory:')
-if ActiveRecord::VERSION::STRING >= "4.2" &&
-  ActiveRecord::VERSION::STRING < "5.0"
+ActiveRecord::Base.establish_connection(adapter: 'sqlite3', database: ':memory:')
+if ActiveRecord::VERSION::STRING >= '4.2' &&
+   ActiveRecord::VERSION::STRING < '5.0'
   ActiveRecord::Base.raise_in_transactional_callbacks = true
 end
 Paperclip.options[:logger] = ActiveRecord::Base.logger
@@ -34,7 +34,7 @@ require File.expand_path('../data/schema', __FILE__)
 require File.expand_path('../data/models', __FILE__)
 DatabaseCleaner.strategy = :truncation # we need to commit transactions so that after_commit callbacks are executed
 
-I18n.available_locales = [:en, :de]
+I18n.available_locales = %i[en de]
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
@@ -50,21 +50,19 @@ RSpec.configure do |config|
   config.example_status_persistence_file_path = 'spec/examples.txt'
   config.disable_monkey_patching!
 
-  if config.files_to_run.one?
-    config.default_formatter = 'doc'
-  end
+  config.default_formatter = 'doc' if config.files_to_run.one?
 
   config.profile_examples = 2
   config.order = :random
   Kernel.srand config.seed
 
-  config.before(:each) do
+  config.before do
     DatabaseCleaner.start
     I18n.locale = I18n.default_locale = :en
     Globalize.locale = nil
   end
 
-  config.after(:each) do
+  config.after do
     DatabaseCleaner.clean
   end
 

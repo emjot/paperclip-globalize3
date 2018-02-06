@@ -7,6 +7,7 @@
    * Make clear that we don't yet support Rails 5.1
 * Internal / development
    * Bump dependencies 
+   * Add rubocop
 
 # 2.2.0 and before
 
