@@ -8,7 +8,7 @@
 * Enhancements
    * Support ruby 2.3 and 2.4
    * Test with paperclip 4.3   
-   * Make clear that we don't yet support Rails 5.1
+   * Support rails 5.1
 * Internal / development
    * Bump dependencies 
    * Add rubocop

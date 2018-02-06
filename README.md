@@ -13,7 +13,7 @@ Note that this implementation patches some methods in the `Paperclip::Attachment
 
 * paperclip 4.2/4.3
 * globalize 5.x
-* Rails 4.2/5.0
+* Rails 4.2/5.0/5.1
 
 For support of previous paperclip / globalize / rails versions please refer to the 2.x versions of this gem.
 
