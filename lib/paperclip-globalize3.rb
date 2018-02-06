@@ -25,4 +25,4 @@ Paperclip.interpolates(:locale) do |attachment, _style_name|
   (attachment_locale || Globalize.locale).to_s
 end
 
-Paperclip::Attachment.send(:include, Paperclip::Globalize3::Attachment)
+Paperclip::Attachment.send(:prepend, Paperclip::Globalize3::Attachment)
