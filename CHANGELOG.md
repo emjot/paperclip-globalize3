@@ -8,7 +8,7 @@
 * Enhancements
    * Support ruby 2.3 and 2.4
    * Test with paperclip 4.3
-   * Support paperclip 5.0/5.1
+   * Support paperclip 5.0/5.1/5.2
    * Support rails 5.1
 * Internal / development
    * Bump dependencies 

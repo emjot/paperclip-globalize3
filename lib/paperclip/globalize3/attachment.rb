@@ -2,7 +2,12 @@ module Paperclip
   module Globalize3
     module Attachment
       def assign(uploaded_file)
-        @file = Paperclip.io_adapters.for(uploaded_file)
+        @file =
+          if Paperclip::Attachment.default_options.key?(:adapter_options) # paperclip >= 5.2.0
+            Paperclip.io_adapters.for(uploaded_file, @options[:adapter_options])
+          else # paperclip < 5.2.0
+            Paperclip.io_adapters.for(uploaded_file)
+          end
         ensure_required_accessors!
         ensure_required_validations!
 
