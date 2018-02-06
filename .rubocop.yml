@@ -1,0 +1,32 @@
+require: rubocop-rspec
+
+inherit_from: .rubocop_todo.yml
+
+AllCops:
+  Include:
+    - 'Appraisals'
+    - '**/*.gemspec'
+    - '**/*.rake'
+    - '**/*.gemfile'
+    - '**/Gemfile'
+    - '**/Rakefile'
+    - '**/Capfile'
+  TargetRubyVersion: 2.2
+
+Layout/AlignHash:
+  EnforcedColonStyle: 'table'
+
+Layout/AlignParameters:
+  EnforcedStyle: 'with_fixed_indentation'
+
+Layout/DotPosition:
+  EnforcedStyle: 'trailing'
+
+Layout/SpaceInsideHashLiteralBraces:
+  EnforcedStyle: 'no_space'
+
+Metrics/LineLength:
+  Max: 120
+
+Naming/VariableNumber:
+  EnforcedStyle: 'snake_case'
