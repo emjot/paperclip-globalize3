@@ -11,11 +11,11 @@ Note that this implementation patches some methods in the `Paperclip::Attachment
 
 ## Compatibility
 
-Currently, paperclip 4.1/4.2 and globalize 4.0/5.0 are supported.
+* paperclip 4.2/4.3
+* globalize 5.x
+* Rails 4.2/5.0
 
-Rails > 5.0 is not yet supported.
-
-For paperclip 3.x with globalize3 support please use the 1.x versions of this gem.
+For support of previous paperclip / globalize / rails versions please refer to the 2.x versions of this gem.
 
 ## Installation
 

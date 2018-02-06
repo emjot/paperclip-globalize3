@@ -6,15 +6,7 @@ rvm:
 before_install: gem install bundler -v '>= 1.13'
 script: "bundle exec rake spec"
 gemfile:
-  - gemfiles/rails_4.0_pc_4_1.gemfile
-  - gemfiles/rails_4.0_pc_4_2.gemfile
-  - gemfiles/rails_4.2_pc_4_1.gemfile
   - gemfiles/rails_4.2_pc_4_2.gemfile
-  - gemfiles/rails_5.0_pc_4_1.gemfile
+  - gemfiles/rails_4.2_pc_4_3.gemfile
   - gemfiles/rails_5.0_pc_4_2.gemfile
-matrix:
-  exclude:
-    - rvm: 2.4.3
-      gemfile: gemfiles/rails_4.0_pc_4_1.gemfile
-    - rvm: 2.4.3
-      gemfile: gemfiles/rails_4.0_pc_4_2.gemfile
+  - gemfiles/rails_5.0_pc_4_3.gemfile

@@ -76,67 +76,6 @@ module Paperclip
           end
         end
       end
-
-      module Compatibility
-        # The paperclip-globalize3 patches are based on paperclip 4.2 code;
-        # this module needs to be included when trying to use with paperclip 4.1.
-        module Paperclip41
-          def assign_attributes
-            @queued_for_write[:original] = @file
-            assign_file_information
-            assign_fingerprint(@file.fingerprint)
-            assign_timestamps
-          end
-
-          def assign_file_information
-            instance_write(:file_name, cleanup_filename(@file.original_filename))
-            instance_write(:content_type, @file.content_type.to_s.strip)
-            instance_write(:file_size, @file.size)
-          end
-
-          def assign_fingerprint(fingerprint)
-            if instance_respond_to?(:fingerprint)
-              instance_write(:fingerprint, fingerprint)
-            end
-          end
-
-          def assign_timestamps
-            if has_enabled_but_unset_created_at?
-              instance_write(:created_at, Time.now)
-            end
-
-            instance_write(:updated_at, Time.now)
-          end
-
-          def post_process_file
-            dirty!
-
-            if post_processing
-              post_process(*only_process)
-            end
-          end
-
-          def dirty!
-            @dirty = true
-          end
-
-          def reset_file_if_original_reprocessed
-            instance_write(:file_size, @queued_for_write[:original].size)
-            assign_fingerprint(@queued_for_write[:original].fingerprint)
-            reset_updater
-          end
-
-          def reset_updater
-            if instance.respond_to?(updater)
-              instance.send(updater)
-            end
-          end
-
-          def updater
-            :"#{name}_file_name_will_change!"
-          end
-        end
-      end
     end
   end
 end
