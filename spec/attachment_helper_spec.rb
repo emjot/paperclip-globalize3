@@ -1,13 +1,13 @@
 require 'spec_helper'
 
 
-describe 'Paperclip::Globalize3::Attachment' do
+RSpec.describe Paperclip::Globalize3::Attachment do
 
   before(:each) do
     stub_const('Rails', double('Rails'))
-    Rails.stub(:root).and_return(ROOT.join('tmp'))
-    Rails.stub(:env).and_return('test')
-    Rails.stub(:const_defined?).with(:Railtie).and_return(false)
+    allow(Rails).to receive(:root).and_return(ROOT.join('tmp'))
+    allow(Rails).to receive(:env).and_return('test')
+    allow(Rails).to receive(:const_defined?).with(:Railtie).and_return(false)
   end
 
   let (:test_image_dir) do
@@ -27,23 +27,23 @@ describe 'Paperclip::Globalize3::Attachment' do
     it 'saves different images for different locales' do
       p = Post.create
       Globalize.with_locale(:en) do
-        p.image_file_name.should be_nil
+        expect(p.image_file_name).to be_nil
         p.update_attributes!(:image => test_image_file)
-        p.image_file_name.should == "test.png"
+        expect(p.image_file_name).to eq("test.png")
       end
-      Post.count.should == 1
-      Post.translation_class.count.should == 1
+      expect(Post.count).to eq(1)
+      expect(Post.translation_class.count).to eq(1)
 
       Globalize.with_locale(:de) do
-        p.image_file_name.should be_nil
+        expect(p.image_file_name).to be_nil
         p.update_attributes!(:image => test_image_file2)
-        p.image_file_name.should == "test2.png"
+        expect(p.image_file_name).to eq("test2.png")
       end
       Globalize.with_locale(:en) do
-        p.image_file_name.should == "test.png"
+        expect(p.image_file_name).to eq("test.png")
       end
-      Post.count.should == 1
-      Post.translation_class.count.should == 2
+      expect(Post.count).to eq(1)
+      expect(Post.translation_class.count).to eq(2)
     end
 
     it 'only overwrites the image file for the current locale on re-assign' do
@@ -56,18 +56,18 @@ describe 'Paperclip::Globalize3::Attachment' do
         p.update_attributes!(:image => test_image_file2)
         p.image.path
       end
-      File.exist?(path_en).should be_true
-      File.exist?(path_de).should be_true
+      expect(File.exist?(path_en)).to be_truthy
+      expect(File.exist?(path_de)).to be_truthy
 
       # re-assign 'en' image (use different image)
       path_en2 = Globalize.with_locale(:en) do
         p.update_attributes!(:image => test_image_file2)
         p.image.path
       end
-      [path_en, path_en2, path_de].uniq.size.should == 3 # paths should all be different
-      File.exist?(path_en).should be_false
-      File.exist?(path_en2).should be_true
-      File.exist?(path_de).should be_true
+      expect([path_en, path_en2, path_de].uniq.size).to eq(3) # paths should all be different
+      expect(File.exist?(path_en)).to be_falsey
+      expect(File.exist?(path_en2)).to be_truthy
+      expect(File.exist?(path_de)).to be_truthy
     end
 
     it 'deletes image files in all locales on destroy' do
@@ -80,20 +80,20 @@ describe 'Paperclip::Globalize3::Attachment' do
         p.update_attributes!(:image => test_image_file)
         p.image.path
       end
-      File.exist?(path_en).should be_true
-      File.exist?(path_de).should be_true
+      expect(File.exist?(path_en)).to be_truthy
+      expect(File.exist?(path_de)).to be_truthy
 
       p.destroy
-      File.exist?(path_en).should be_false
-      File.exist?(path_de).should be_false
+      expect(File.exist?(path_en)).to be_falsey
+      expect(File.exist?(path_de)).to be_falsey
     end
 
     context 'with :only_process' do
 
       it 'only clears the provided style in the current locale on assign' do
         p = OnlyProcessPost.create
-        p.image.should_receive(:queue_some_for_delete).with(:thumb, :locales => :en)
-        p.image.should_not_receive(:queue_all_for_delete)
+        expect(p.image).to receive(:queue_some_for_delete).with(:thumb, :locales => :en)
+        expect(p.image).not_to receive(:queue_all_for_delete)
 
         Globalize.with_locale(:en) do
           p.update_attributes!(:image => test_image_file)
@@ -110,10 +110,10 @@ describe 'Paperclip::Globalize3::Attachment' do
       p = Untranslated.create
       p.update_attributes!(:image => test_image_file)
       path = p.image.path
-      File.exist?(path).should be_true
+      expect(File.exist?(path)).to be_truthy
 
       p.destroy
-      File.exist?(path).should be_false
+      expect(File.exist?(path)).to be_falsey
     end
 
   end
@@ -143,8 +143,8 @@ describe 'Paperclip::Globalize3::Attachment' do
         p.save!
       end
 
-      Globalize.with_locale(:en) { expect(File.exists?(p.image.path)).to be_true }
-      Globalize.with_locale(:de) { expect(File.exists?(p.image.path)).to be_true }
+      Globalize.with_locale(:en) { expect(File.exists?(p.image.path)).to be_truthy }
+      Globalize.with_locale(:de) { expect(File.exists?(p.image.path)).to be_truthy }
     end
   end
 
