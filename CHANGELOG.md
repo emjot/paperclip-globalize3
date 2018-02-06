@@ -7,7 +7,8 @@
    * Drop support for globalize < 5.0
 * Enhancements
    * Support ruby 2.3 and 2.4
-   * Test with paperclip 4.3   
+   * Test with paperclip 4.3
+   * Support paperclip 5.0/5.1
    * Support rails 5.1
 * Internal / development
    * Bump dependencies 
