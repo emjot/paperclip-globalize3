@@ -1,8 +1,8 @@
-require "paperclip/globalize3/version"
-require "paperclip/globalize3/attachment"
+require 'paperclip/globalize3/version'
+require 'paperclip/globalize3/attachment'
 
-require "globalize"
-require "paperclip"
+require 'globalize'
+require 'paperclip'
 
 # Paperclip locale interpolation: if locale fallbacks are used, we need to determine & use the fallback locale
 Paperclip.interpolates(:locale) do |attachment, _style_name|
@@ -18,7 +18,7 @@ Paperclip.interpolates(:locale) do |attachment, _style_name|
       end
     else
       Rails.logger.warn(
-        "WARN You have used :locale in a paperclip url/path for an untranslated model (in #{record.class.to_s})."
+        "WARN You have used :locale in a paperclip url/path for an untranslated model (in #{record.class})."
       )
       nil
     end

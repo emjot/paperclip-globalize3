@@ -1,7 +1,6 @@
 module Paperclip
   module Globalize3
     module Attachment
-
       def self.included(base)
         base.send :include, InstanceMethods
         base.send :alias_method_chain, :assign, :globalize3
@@ -61,9 +60,10 @@ module Paperclip
         # If translated, execute the block for the given locales only (or for all translated locales if none are given).
         # If any locales are given, only those for which a translation exists are used.
         # If attachment is untranslated, simply execute the block.
-        def with_locales_if_translated(with_locales = nil, &block)
+        def with_locales_if_translated(with_locales = nil)
           if instance.respond_to?(:translated_locales) && instance.translated?(:"#{name}_file_name")
-            # TODO translated_locales are not present any more when this is called via destroy callback (unless 'translates' is defined AFTER 'has_attached_file' in the model class)
+            # TODO: translated_locales are not present any more when this is called via destroy callback
+            #   (unless 'translates' is defined AFTER 'has_attached_file' in the model class)
             with_locales =
               if with_locales.nil?
                 [*instance.translated_locales]
@@ -137,7 +137,6 @@ module Paperclip
           end
         end
       end
-
     end
   end
 end
