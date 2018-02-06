@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 RSpec.describe Paperclip::Globalize3::Attachment do
-  before(:each) do
+  before do
     stub_const('Rails', double('Rails'))
     allow(Rails).to receive(:root).and_return(ROOT.join('tmp'))
     allow(Rails).to receive(:env).and_return('test')
@@ -53,18 +53,18 @@ RSpec.describe Paperclip::Globalize3::Attachment do
         p.update_attributes!(image: test_image_file2)
         p.image.path
       end
-      expect(File.exist?(path_en)).to be_truthy
-      expect(File.exist?(path_de)).to be_truthy
+      expect(File).to be_exist(path_en)
+      expect(File).to be_exist(path_de)
 
       # re-assign 'en' image (use different image)
-      path_en2 = Globalize.with_locale(:en) do
+      path_en_2 = Globalize.with_locale(:en) do
         p.update_attributes!(image: test_image_file2)
         p.image.path
       end
-      expect([path_en, path_en2, path_de].uniq.size).to eq(3) # paths should all be different
-      expect(File.exist?(path_en)).to be_falsey
-      expect(File.exist?(path_en2)).to be_truthy
-      expect(File.exist?(path_de)).to be_truthy
+      expect([path_en, path_en_2, path_de].uniq.size).to eq(3) # paths should all be different
+      expect(File).not_to be_exist(path_en)
+      expect(File).to be_exist(path_en_2)
+      expect(File).to be_exist(path_de)
     end
 
     it 'deletes image files in all locales on destroy' do
@@ -77,12 +77,12 @@ RSpec.describe Paperclip::Globalize3::Attachment do
         p.update_attributes!(image: test_image_file)
         p.image.path
       end
-      expect(File.exist?(path_en)).to be_truthy
-      expect(File.exist?(path_de)).to be_truthy
+      expect(File).to be_exist(path_en)
+      expect(File).to be_exist(path_de)
 
       p.destroy
-      expect(File.exist?(path_en)).to be_falsey
-      expect(File.exist?(path_de)).to be_falsey
+      expect(File).not_to be_exist(path_en)
+      expect(File).not_to be_exist(path_de)
     end
 
     context 'with :only_process' do
@@ -103,15 +103,15 @@ RSpec.describe Paperclip::Globalize3::Attachment do
       p = Untranslated.create
       p.update_attributes!(image: test_image_file)
       path = p.image.path
-      expect(File.exist?(path)).to be_truthy
+      expect(File).to be_exist(path)
 
       p.destroy
-      expect(File.exist?(path)).to be_falsey
+      expect(File).not_to be_exist(path)
     end
   end
 
   context 'with fallbacks' do
-    around :each do |example|
+    around do |example|
       old_fallbacks = Globalize.fallbacks
       Globalize.fallbacks = {en: %i[en de], de: %i[de en]}
       example.run
@@ -134,8 +134,8 @@ RSpec.describe Paperclip::Globalize3::Attachment do
         p.save!
       end
 
-      Globalize.with_locale(:en) { expect(File.exist?(p.image.path)).to be_truthy }
-      Globalize.with_locale(:de) { expect(File.exist?(p.image.path)).to be_truthy }
+      Globalize.with_locale(:en) { expect(File).to be_exist(p.image.path) }
+      Globalize.with_locale(:de) { expect(File).to be_exist(p.image.path) }
     end
   end
 end

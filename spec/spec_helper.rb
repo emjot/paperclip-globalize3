@@ -56,13 +56,13 @@ RSpec.configure do |config|
   config.order = :random
   Kernel.srand config.seed
 
-  config.before(:each) do
+  config.before do
     DatabaseCleaner.start
     I18n.locale = I18n.default_locale = :en
     Globalize.locale = nil
   end
 
-  config.after(:each) do
+  config.after do
     DatabaseCleaner.clean
   end
 
