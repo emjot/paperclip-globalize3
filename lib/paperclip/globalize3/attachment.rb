@@ -61,23 +61,37 @@ module Paperclip
         end
       end
 
-      # If translated, execute the block for the given locales only (or for all translated locales if none are given).
-      # If any locales are given, only those for which a translation exists are used.
-      # If attachment is untranslated, simply execute the block.
+      # Yields the given block in context of Globalize#with_locales, but handles these situations gracefully:
+      #
+      # * if it is not translated (=> then don't use Globalize)
+      # * if there are no locales given (=> then use all translated locales)
+      # * if there are `with_locales` requested for which there are no translations (=> then skip those)
+      #
+      # @param [Symbol, Array[Symbol], nil] with_locales only yield block for these translated locales
       def with_locales_if_translated(with_locales = nil)
-        if instance.respond_to?(:translated_locales) && instance.translated?(:"#{name}_file_name")
-          # TODO: translated_locales are not present any more when this is called via destroy callback
-          #   (unless 'translates' is defined AFTER 'has_attached_file' in the model class)
-          with_locales =
-            if with_locales.nil?
-              [*instance.translated_locales]
-            else
-              [*with_locales] & instance.translated_locales
-            end
-          Globalize.with_locales(with_locales) { yield }
+        if translated?
+          locales = with_locales.nil? ? translated_locales : [*with_locales] & translated_locales
+          Globalize.with_locales(locales) { yield }
         else
           yield
         end
+      end
+
+      # Whether both the model and the attachment are translated
+      def translated?
+        instance.respond_to?(:translated_locales) && instance.translated?(:"#{name}_file_name")
+      end
+
+      # Returns the locales for which there are translations for the model instance, if applicable
+      # (nil if the model or the attachment is not translated).
+      #
+      # @return [Array[Symbol], nil]
+      def translated_locales
+        return unless translated?
+
+        # TODO: translated_locales are not present any more when this is called via destroy callback
+        #   (unless 'translates' is defined AFTER 'has_attached_file' in the model class)
+        instance.translated_locales
       end
     end
   end
