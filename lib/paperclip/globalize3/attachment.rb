@@ -1,5 +1,13 @@
 module Paperclip
   module Globalize3
+    # Prepend to the paperclip `Attachment` class to transparently read and write
+    # your attachments in context of the current locale using globalize.
+    #
+    # E.g. `my_model.my_attachment` returns a different attachment when your
+    # current locale is 'en' compared to when your current locale is 'de'.
+    #
+    # Requires a :locale interpolation for your paperclip attachment(s) and the
+    # respective columns to be translated.
     module Attachment
       def assign(uploaded_file)
         @file =
@@ -12,7 +20,7 @@ module Paperclip
         ensure_required_validations!
 
         if @file.assignment?
-          clear(*only_process, :locales => Globalize.locale) # [paperclip-globalize3] only clear current locale
+          clear(*only_process, locales: Globalize.locale) # [paperclip-globalize3] only clear current locale
           if @file.nil?
             nil
           else

@@ -30,3 +30,7 @@ Metrics/LineLength:
 
 Naming/VariableNumber:
   EnforcedStyle: 'snake_case'
+
+Style/EmptyElse:
+  Exclude:
+    - 'lib/paperclip/globalize3/attachment.rb'
