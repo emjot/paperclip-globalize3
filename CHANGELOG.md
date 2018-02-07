@@ -1,5 +1,12 @@
 # (unreleased)
 
+* Bugfixes
+    * (none)
+* Enhancements
+    * (none)
+
+# 3.0.0 (2018-02-07)
+
 * Breaking changes 
     * Drop support for ruby < 2.2.2
     * Drop support for rails < 4.2
@@ -19,6 +26,6 @@
     * Add rubocop
     * Add yard
 
-# 2.2.0 and before
+# 2.x and before
 
 (Sorry, there was no CHANGELOG before, so please refer to github commits.)
