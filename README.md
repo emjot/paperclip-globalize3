@@ -1,6 +1,6 @@
 # Paperclip::Globalize3
 
-[![Build Status](https://travis-ci.org/emjot/paperclip-globalize3.png?branch=master)](https://travis-ci.org/emjot/paperclip-globalize3)
+[![Build Status](https://travis-ci.org/emjot/paperclip-globalize3.png?branch=2.x-stable)](https://travis-ci.org/emjot/paperclip-globalize3)
 
 Use locale-specific attachments in your Rails app with [paperclip](https://github.com/thoughtbot/paperclip) and
 [globalize](https://github.com/globalize/globalize).
@@ -11,7 +11,9 @@ Note that this implementation patches some methods in the `Paperclip::Attachment
 
 ## Compatibility
 
-Currently, paperclip 4.1/4.2 and globalize 4.0/5.0 are supported.
+This is a maintenance branch for previous (2.x) versions. 
+
+Here, paperclip 4.1/4.2 and globalize 4.0/5.0 and rails 4.x are supported.
 
 For paperclip 3.x with globalize3 support please use the 1.x versions of this gem.
 
@@ -19,7 +21,7 @@ For paperclip 3.x with globalize3 support please use the 1.x versions of this ge
 
 Add this line to your application's Gemfile:
 
-    gem 'paperclip-globalize3'
+    gem 'paperclip-globalize3', '~> 2.2'
 
 And then execute:
 
@@ -27,7 +29,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install paperclip-globalize3
+    $ gem install paperclip-globalize3 -v '~> 2.2'
 
 ## Usage
 
