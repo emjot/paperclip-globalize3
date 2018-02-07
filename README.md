@@ -21,7 +21,7 @@ For paperclip 3.x with globalize3 support please use the 1.x versions of this ge
 
 Add this line to your application's Gemfile:
 
-    gem 'paperclip-globalize3', '~> 2.2'
+    gem 'paperclip-globalize3', '~> 2.3'
 
 And then execute:
 
@@ -29,7 +29,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install paperclip-globalize3 -v '~> 2.2'
+    $ gem install paperclip-globalize3 -v '~> 2.3'
 
 ## Usage
 
