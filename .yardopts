@@ -1,0 +1,5 @@
+lib/**/*.rb
+--output-dir doc
+--no-private
+--readme README.md
+- CHANGELOG.md
