@@ -25,6 +25,14 @@ Layout/DotPosition:
 Layout/SpaceInsideHashLiteralBraces:
   EnforcedStyle: 'no_space'
 
+Metrics/AbcSize:
+  Exclude:
+    - 'lib/paperclip/globalize3/attachment.rb'
+
+Metrics/MethodLength:
+  Exclude:
+    - 'lib/paperclip/globalize3/attachment.rb'
+
 Metrics/LineLength:
   Max: 120
 
