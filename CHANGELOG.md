@@ -5,6 +5,8 @@
    * Drop support for rails < 4.2
    * Drop support for paperclip < 4.2
    * Drop support for globalize < 5.0
+* Bugfixes
+   * (none)
 * Enhancements
    * Support ruby 2.3 and 2.4
    * Test with paperclip 4.3
