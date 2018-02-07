@@ -9,7 +9,7 @@ require 'database_cleaner'
 ROOT = Pathname(File.expand_path(File.join(File.dirname(__FILE__), '..')))
 TEST_ASSETS_PATH = Pathname.new(ROOT).join('tmp', 'public')
 
-require File.expand_path(File.join(File.dirname(__FILE__), '../lib/paperclip-globalize3'))
+require File.expand_path(File.join(File.dirname(__FILE__), '../lib/paperclip/globalize3'))
 
 ActiveRecord::Base.send(:include, Paperclip::Glue)
 

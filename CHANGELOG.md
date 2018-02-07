@@ -5,6 +5,8 @@
     * Drop support for rails < 4.2
     * Drop support for paperclip < 4.2
     * Drop support for globalize < 5.0
+    * Move paperclip-globalize3.rb to paperclip/globalize3.rb 
+      (if you manually require 'paperclip-globalize3', change it to 'paperclip/globalize3')
 * Bugfixes
     * (none)
 * Enhancements
