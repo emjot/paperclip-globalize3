@@ -66,6 +66,40 @@ RSpec.describe Paperclip::Globalize3::Attachment do
       end
     end
 
+    context 'when assignment is done in multiple locales before saving' do
+      let!(:post) do
+        Post.new.tap do |p|
+          with_locale(:en) { p.image = test_image_file }
+          with_locale(:de) { p.image = test_image_file2 }
+          p.save!
+        end
+      end
+
+      it 'is present in fist locale' do
+        expect(with_locale(:en) { post.image_file_name }).to eq('test.png')
+      end
+
+      it 'is present in second locale' do
+        expect(with_locale(:de) { post.image_file_name }).to eq('test2.png')
+      end
+
+      it 'exists in the file system in the first locale' do
+        expect(File).to be_exist(with_locale(:en) { post.image.path })
+      end
+
+      it 'exists in the file system in the second locale' do
+        expect(File).to be_exist(with_locale(:de) { post.image.path })
+      end
+
+      it('results in a model count of 1') do
+        expect(Post.count).to eq(1)
+      end
+
+      it('results in a model translations count of 2') do
+        expect(Post.translation_class.count).to eq(2)
+      end
+    end
+
     context 'when another attachment gets assigned to a different locale' do
       subject(:assign_to_different) { with_locale(:de) { post.update!(image: test_image_file2) } }
 
