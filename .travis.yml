@@ -3,7 +3,10 @@ rvm:
   - 2.2.2
   - 2.3.5
   - 2.4.3
-before_install: gem install bundler -v '>= 1.13'
+before_install:
+  - gem uninstall -v '>= 2.0.1' -i $(rvm gemdir)@global -ax bundler || true
+  - gem install bundler -v '1.16.6'
+
 script: "bundle exec rake spec"
 gemfile:
   - gemfiles/rails_4.2_pc_4_2.gemfile
