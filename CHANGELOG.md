@@ -3,7 +3,7 @@
 * Bugfixes
     * (none)
 * Enhancements
-    * (none)
+    * Support for paperclip 6.0.0 (#12)
 
 # 3.0.0 (2018-02-07)
 
