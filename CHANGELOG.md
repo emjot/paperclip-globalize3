@@ -3,6 +3,11 @@
 * Bugfixes
     * (none)
 * Enhancements
+    * (none)
+
+# 3.1.0 (2019-04-15)
+
+* Enhancements
     * Support for paperclip 6.0.0 (#12)
 * Internal / development
     * update ruby patch versions
