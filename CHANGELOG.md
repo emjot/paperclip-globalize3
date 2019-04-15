@@ -4,6 +4,8 @@
     * (none)
 * Enhancements
     * Support for paperclip 6.0.0 (#12)
+* Internal / development
+    * update ruby patch versions
 
 # 3.0.0 (2018-02-07)
 
