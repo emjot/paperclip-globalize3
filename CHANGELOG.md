@@ -8,7 +8,7 @@
 # 3.1.0 (2019-04-15)
 
 * Enhancements
-    * Support for paperclip 6.0.0 (#12)
+    * Support for paperclip 6.0.0 ([#12](https://github.com/emjot/paperclip-globalize3/pull/12))
 * Internal / development
     * update ruby patch versions
 
