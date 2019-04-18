@@ -1,4 +1,4 @@
-lib = File.expand_path('../lib', __FILE__)
+lib = File.expand_path('lib', __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'paperclip/globalize3/version'
 require 'English'
@@ -22,7 +22,7 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'activerecord', ['>= 4.2', '< 5.2']
   spec.add_dependency 'globalize', ['>= 5.0.0', '< 5.2.0']
-  spec.add_dependency 'paperclip', ['>= 4.2', '<= 6.0.0']
+  spec.add_dependency 'paperclip', ['>= 4.2', '< 6.2.0']
 
   spec.add_development_dependency 'appraisal', '~> 2.2'
   spec.add_development_dependency 'bundler', ['>= 1.16.6', '< 2.0.1']
