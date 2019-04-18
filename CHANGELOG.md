@@ -3,6 +3,11 @@
 * Bugfixes
     * (none)
 * Enhancements
+    * (none)
+
+# 3.2.0 (2019-04-18)
+
+* Enhancements
     * Allow paperclip 6.1 ([#13](https://github.com/emjot/paperclip-globalize3/pull/13))
 
 # 3.1.0 (2019-04-15)
