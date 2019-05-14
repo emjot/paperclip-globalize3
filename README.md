@@ -19,7 +19,7 @@ For support of previous paperclip / globalize / rails versions please refer to t
 
 ### Important Note for Rails 4.2.x with globalize 5.2.0
 
-If you use Rails 4.2: There is a bug in globalize 5.2.0. Ensure you use globalize 5.2.1 or later after it gets released. Meanwhile, you should be able to use the following instead:
+If you use Rails 4.2: There is a bug in globalize 5.2.0. Ensure you use globalize 5.2.1 or later after it gets released. Meanwhile, you should be able to use the following instead (which is one commit after the 5.2.0 release and includes the fix):
 
     gem 'globalize', git: 'https://github.com/globalize/globalize', branch: 'master', ref: '3fe2f93ab2'
 
