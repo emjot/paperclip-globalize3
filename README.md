@@ -12,10 +12,16 @@ Note that this implementation patches some methods in the `Paperclip::Attachment
 ## Compatibility
 
 * paperclip 4.2 - 6.1
-* globalize 5.0 - 5.1
+* globalize 5.0 - 5.2
 * Rails 4.2/5.0/5.1
 
 For support of previous paperclip / globalize / rails versions please refer to the 2.x versions of this gem.
+
+### Important Note for Rails 4.2.x with globalize 5.2.0
+
+If you use Rails 4.2: There is a bug in globalize 5.2.0. Ensure you use globalize 5.2.1 or later after it gets released. Meanwhile, you should be able to use the following instead:
+
+    gem 'globalize', git: 'https://github.com/globalize/globalize', branch: 'master', ref: '3fe2f93ab2'
 
 ## Maintainance State of This Gem
 

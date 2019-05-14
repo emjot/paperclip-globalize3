@@ -3,7 +3,8 @@
 * Bugfixes
     * (none)
 * Enhancements
-    * (none)
+    * Allow globalize 5.2 ([#14](https://github.com/emjot/paperclip-globalize3/pull/14)). 
+      Note that globalize 5.2.0 is currently broken in rails 4.2; see README. 
 
 # 3.2.0 (2019-04-18)
 
