@@ -1,9 +1,13 @@
 # (unreleased)
 
+* Breaking changes 
+    * Drop support for ruby < 2.4.6
+    * Drop support for globalize < 5.3   
 * Bugfixes
     * (none)
 * Enhancements
-    * (none)
+    * Allow globalize 5.3
+      With globalize 5.3.0 paperclip-globalize3 is again compatible witj Rails 4.2 
 
 # 3.3.0 (2019-05-14)
 

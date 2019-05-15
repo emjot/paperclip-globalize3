@@ -4,6 +4,5 @@ source 'https://rubygems.org'
 
 gem 'rails', '~> 4.2.0'
 gem 'paperclip', '~> 4.2.0'
-gem 'globalize', git: 'https://github.com/globalize/globalize', branch: 'master', ref: '3fe2f93ab2'
 
 gemspec path: '../'
