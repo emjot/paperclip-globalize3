@@ -18,10 +18,10 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ['lib']
 
-  spec.required_ruby_version = '>= 2.2.2'
+  spec.required_ruby_version = '>= 2.4.6'
 
   spec.add_dependency 'activerecord', ['>= 4.2', '< 5.2']
-  spec.add_dependency 'globalize', ['>= 5.0.0', '< 5.3.0']
+  spec.add_dependency 'globalize', ['>= 5.3.0', '< 5.4.0']
   spec.add_dependency 'paperclip', ['>= 4.2', '< 6.2.0']
 
   spec.add_development_dependency 'appraisal', '~> 2.2'
