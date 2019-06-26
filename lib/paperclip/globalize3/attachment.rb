@@ -57,7 +57,7 @@ module Paperclip
         options = args.extract_options!
         styles  = args
         with_locales_if_translated(options[:locales]) do
-          super(styles)
+          super(*styles)
         end
       end
 
