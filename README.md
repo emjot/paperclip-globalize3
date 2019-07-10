@@ -15,11 +15,11 @@ Note that this implementation patches some methods in the `Paperclip::Attachment
 * globalize 5.3
 * Rails 4.2/5.0/5.1
 
-For support of previous paperclip / globalize / rails versions please refer to the 2.x versions of this gem.
+For support of previous paperclip / globalize / rails versions please refer to the 3.x versions of this gem.
 
 ## Maintainance State of This Gem
 
-Since paperclip itself has been [deprecated](https://thoughtbot.com/blog/closing-the-trombone) and we currently do not use this gem in active projects any more, further development of this gem (e.g. compatibility with Rails 5.2, globalize 5.2 etc.) is unlikely. If anyone wants to submit a PR, we will of course still try to review + merge. 
+Since paperclip itself has been [deprecated](https://thoughtbot.com/blog/closing-the-trombone) and we currently do not use this gem in active projects any more, further development of this gem (e.g. compatibility with Rails 5.2) is unlikely. If anyone wants to submit a PR, we will of course still try to review + merge. 
 
 ## Installation
 

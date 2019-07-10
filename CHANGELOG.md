@@ -1,5 +1,12 @@
 # (unreleased)
 
+* Bugfixes
+    * (none)
+* Enhancements
+    * (none)
+
+# 4.0.0 (2019-07-10)
+
 * Breaking changes 
     * Drop support for ruby < 2.4.6
     * Drop support for globalize < 5.3
@@ -8,7 +15,7 @@
     * Fix `attachment.clear(:style)` not deleting the files ([#17](https://github.com/emjot/paperclip-globalize3/pull/17)) 
 * Enhancements
     * Allow globalize 5.3
-      With globalize 5.3.0 paperclip-globalize3 is again compatible witj Rails 4.2 
+      With globalize 5.3.0 paperclip-globalize3 is again compatible with Rails 4.2 
 
 # 3.3.0 (2019-05-14)
 
