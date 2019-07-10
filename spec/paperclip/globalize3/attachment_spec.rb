@@ -166,6 +166,42 @@ RSpec.describe Paperclip::Globalize3::Attachment do
     end
   end
 
+  describe 'clear attachment style' do
+    subject(:clear_style) do
+      post.image.clear(:large)
+      post.save!
+    end
+
+    let!(:post) do
+      PostWithStyles.create!.tap do |post|
+        with_locale(:en) { post.update!(image: test_image_file) }
+        with_locale(:de) { post.update!(image: test_image_file2) }
+      end
+    end
+
+    let!(:large_paths) do
+      [
+        with_locale(:de) { post.image.path(:large) },
+        with_locale(:en) { post.image.path(:large) }
+      ]
+    end
+
+    let!(:other_paths) do
+      with_locale(:en) { [post.image.path, post.image.path(:thumb)] } +
+        with_locale(:de) { [post.image.path, post.image.path(:thumb)] }
+    end
+
+    context 'without :locales option' do
+      it 'deletes the given attachment style in all locales' do
+        expect { clear_style }.to(change { large_paths.collect { |path| File.exist?(path) } }.to([false, false]))
+      end
+
+      it 'does not delete any other attachment styles' do
+        expect { clear_style }.not_to(change { other_paths.collect { |path| File.exist?(path) } })
+      end
+    end
+  end
+
   context 'when fallbacks are defined' do
     around do |example|
       old_fallbacks = Globalize.fallbacks
