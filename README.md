@@ -11,7 +11,7 @@ Note that this implementation patches some methods in the `Paperclip::Attachment
 
 ## Compatibility
 
-* paperclip 4.2 - 6.1
+* paperclip 5.3 - 6.1
 * globalize 5.3
 * Rails 4.2/5.0/5.1
 

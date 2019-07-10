@@ -2,7 +2,8 @@
 
 * Breaking changes 
     * Drop support for ruby < 2.4.6
-    * Drop support for globalize < 5.3   
+    * Drop support for globalize < 5.3
+    * Drop support for paperclip < 5.3
 * Bugfixes
     * Fix `attachment.clear(:style)` not deleting the files ([#17](https://github.com/emjot/paperclip-globalize3/pull/17)) 
 * Enhancements
