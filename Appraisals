@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Rails 4.2
 
 appraise 'rails-4.2-pc-5-3' do

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class BasePost < ActiveRecord::Base
   self.table_name = 'posts'
 end

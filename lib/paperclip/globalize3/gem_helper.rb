@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Paperclip
   module Globalize3
     # Like Bundler::GemHelper, but tags versions without the 'v' prefix (e.g. '1.0.0' instead of 'v1.0.0')

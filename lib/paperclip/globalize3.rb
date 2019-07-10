@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'paperclip/globalize3/version'
 require 'paperclip/globalize3/attachment'
 

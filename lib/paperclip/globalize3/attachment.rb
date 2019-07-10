@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Paperclip
   module Globalize3
     # Prepend to the paperclip `Attachment` class to transparently read and write
