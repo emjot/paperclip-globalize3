@@ -3,6 +3,13 @@
 * Bugfixes
     * (none)
 * Enhancements
+    * (none)
+
+# 4.1.0 (2019-11-04)
+
+* Bugfixes
+    * (none)
+* Enhancements
     * Allow rails 5.2 and 6.0 ([#20](https://github.com/emjot/paperclip-globalize3/pull/20))
 * Internal / development
     * Update ruby patch versions
