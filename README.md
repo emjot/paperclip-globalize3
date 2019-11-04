@@ -15,6 +15,8 @@ Note that this implementation patches some methods in the `Paperclip::Attachment
 * globalize 5.3
 * Rails 4.2/5.0/5.1/5.2/6.0
 
+Rails 5.2 and later are only tested with paperclip 6.1 (see `.travis.yml` for details).
+
 For support of previous paperclip / globalize / rails versions please refer to the 3.x versions of this gem.
 
 ## Maintainance State of This Gem
