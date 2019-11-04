@@ -1,8 +1,8 @@
 language: ruby
 rvm:
-  - 2.4.6
-  - 2.5.5
-  - 2.6.3
+  - 2.4.9
+  - 2.5.7
+  - 2.6.5
 before_install:
   - gem uninstall -v '>= 2.0.1' -i $(rvm gemdir)@global -ax bundler || true
   - gem install bundler -v '1.16.6'
@@ -23,5 +23,5 @@ gemfile:
 
 jobs:
   exclude:
-    - rvm: 2.4.6
+    - rvm: 2.4.9
       gemfile: gemfiles/rails_6.0_pc_6_1.gemfile
