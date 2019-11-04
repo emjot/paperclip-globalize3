@@ -18,3 +18,5 @@ gemfile:
   - gemfiles/rails_5.1_pc_5_3.gemfile
   - gemfiles/rails_5.1_pc_6_0.gemfile
   - gemfiles/rails_5.1_pc_6_1.gemfile
+  - gemfiles/rails_5.2_pc_6_1.gemfile
+  - gemfiles/rails_6.0_pc_6_1.gemfile
