@@ -13,10 +13,10 @@ AllCops:
     - '**/Capfile'
   TargetRubyVersion: 2.4
 
-Layout/AlignHash:
+Layout/HashAlignment:
   EnforcedColonStyle: 'table'
 
-Layout/AlignParameters:
+Layout/ParameterAlignment:
   EnforcedStyle: 'with_fixed_indentation'
 
 Layout/DotPosition:
