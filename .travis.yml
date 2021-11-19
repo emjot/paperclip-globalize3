@@ -22,8 +22,11 @@ gemfile:
   - gemfiles/rails_5.1_pc_6_1.gemfile
   - gemfiles/rails_5.2_pc_6_1.gemfile
   - gemfiles/rails_6.0_pc_6_1.gemfile
+  - gemfiles/rails_6.1_pc_6_1.gemfile
 
 jobs:
   exclude:
     - rvm: 2.4.9
       gemfile: gemfiles/rails_6.0_pc_6_1.gemfile
+    - rvm: 2.4.9
+      gemfile: gemfiles/rails_6.1_pc_6_1.gemfile
