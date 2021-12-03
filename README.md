@@ -1,6 +1,4 @@
-# Paperclip::Globalize3
-
-# Travanto [![Tests](https://github.com/emjot/paperclip-globalize3/actions/workflows/test.yml/badge.svg)](https://github.com/emjot/paperclip-globalize3/actions/workflows/test.yml)
+# Paperclip::Globalize3 [![Tests](https://github.com/emjot/paperclip-globalize3/actions/workflows/test.yml/badge.svg)](https://github.com/emjot/paperclip-globalize3/actions/workflows/test.yml)
 
 Use locale-specific attachments in your Rails app with [paperclip](https://github.com/thoughtbot/paperclip) and
 [globalize](https://github.com/globalize/globalize).
