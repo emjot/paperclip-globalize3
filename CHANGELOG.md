@@ -5,6 +5,11 @@
 * Enhancements
     * (none)
 
+# 4.2.0 (2021-12-03)
+
+* Enhancements
+  * Allow rails 6.1 ([#21](https://github.com/emjot/paperclip-globalize3/pull/21))
+
 # 4.1.0 (2019-11-04)
 
 * Bugfixes
