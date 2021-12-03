@@ -1,4 +1,4 @@
-Copyright (c) 2013-2019 emjot GmbH & Co. KG
+Copyright (c) 2013-2021 emjot GmbH & Co. KG
 
 MIT License
 
