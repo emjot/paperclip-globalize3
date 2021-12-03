@@ -1,3 +1,5 @@
+# NOTE: when changing this file, please adapt .github/workflows/test.yml accordingly
+
 language: ruby
 rvm:
   - 2.4.9
