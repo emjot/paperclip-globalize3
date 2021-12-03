@@ -50,3 +50,17 @@ appraise 'rails-5.1-pc-6-1' do
   gem 'rails',      '~> 5.1.0'
   gem 'paperclip',  '~> 6.1.0'
 end
+
+# Rails 6.0
+
+appraise 'rails-6.0-pc-6-1' do
+  gem 'rails',      '~> 6.0.4'
+  gem 'paperclip',  '~> 6.1.0'
+end
+
+# Rails 6.1
+
+appraise 'rails-6.1-pc-6-1' do
+  gem 'rails',      '~> 6.1.4'
+  gem 'paperclip',  '~> 6.1.0'
+end
